@@ -36,44 +36,38 @@ export const Landing: React.FC = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section with Custom Background */}
-      <div className="relative">
-        <HeroGeometric 
-          badge="GitHub Manager"
-          title1="Streamline Your"
-          title2="GitHub Workflow"
-        />
-        
-        {/* CTA Button Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center space-y-8 z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.5, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-16"
+      <HeroGeometric 
+        badge="GitHub Manager"
+        title1="Streamline Your"
+        title2="GitHub Workflow"
+        ctaButton={
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.1 }}
+            className="flex justify-center mt-8"
+          >
+            <Button
+              size="lg"
+              onClick={login}
+              disabled={isLoading}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg shadow-elegant"
             >
-              <Button
-                size="lg"
-                onClick={login}
-                disabled={isLoading}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg shadow-elegant"
-              >
-                {isLoading ? (
-                  <div className="flex items-center space-x-2">
-                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                    <span>Connecting...</span>
-                  </div>
-                ) : (
-                  <div className="flex items-center space-x-2">
-                    <Github className="w-5 h-5" />
-                    <span>Sign in with GitHub</span>
-                  </div>
-                )}
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </div>
+              {isLoading ? (
+                <div className="flex items-center space-x-2">
+                  <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                  <span>Connecting...</span>
+                </div>
+              ) : (
+                <div className="flex items-center space-x-2">
+                  <Github className="w-5 h-5" />
+                  <span>Sign in with GitHub</span>
+                </div>
+              )}
+            </Button>
+          </motion.div>
+        }
+      />
 
       {/* Features Section */}
       <section className="py-24 bg-background-secondary">

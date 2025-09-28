@@ -76,10 +76,12 @@ function HeroGeometric({
     badge = "Design Collective",
     title1 = "Elevate Your Digital Vision",
     title2 = "Crafting Exceptional Websites",
+    ctaButton,
 }: {
     badge?: string;
     title1?: string;
     title2?: string;
+    ctaButton?: React.ReactNode;
 }) {
     return (
         <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#030303]">
@@ -176,6 +178,8 @@ function HeroGeometric({
                             innovative design and cutting-edge technology.
                         </p>
                     </motion.div>
+
+                    {ctaButton && ctaButton}
                 </div>
             </div>
 
