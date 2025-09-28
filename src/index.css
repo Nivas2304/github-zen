@@ -8,36 +8,36 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* GitHub Dark Theme Colors */
-    --background: 223 39% 7%;          /* #0d1117 */
-    --background-secondary: 222 22% 16%; /* #21262d */
-    --foreground: 210 46% 95%;         /* #f0f6fc */
+    /* GitHub Dark Theme Colors with Landing Background */
+    --background: 217 33% 2%;             /* #030303 - Landing dark bg */
+    --background-secondary: 222 22% 16%;   /* #21262d */
+    --foreground: 210 46% 95%;            /* #f0f6fc */
 
-    --card: 222 22% 16%;               /* #21262d */
-    --card-foreground: 210 46% 95%;    /* #f0f6fc */
+    --card: 222 22% 16%;                  /* #21262d with transparency */
+    --card-foreground: 210 46% 95%;       /* #f0f6fc */
 
     --popover: 222 22% 16%;
     --popover-foreground: 210 46% 95%;
 
-    --primary: 212 92% 45%;            /* #1f6feb GitHub blue */
+    --primary: 212 92% 45%;               /* #1f6feb GitHub blue */
     --primary-foreground: 210 46% 95%;
 
-    --secondary: 222 22% 16%;          /* #21262d */
+    --secondary: 222 22% 16%;             /* #21262d */
     --secondary-foreground: 210 46% 95%;
 
-    --success: 137 72% 34%;            /* #238636 GitHub green */
+    --success: 137 72% 34%;               /* #238636 GitHub green */
     --success-foreground: 210 46% 95%;
 
-    --muted: 215 21% 19%;              /* #30363d borders */
+    --muted: 215 21% 19%;                 /* #30363d borders */
     --muted-foreground: 215 14% 58%;
 
-    --accent: 212 92% 45%;             /* #1f6feb */
+    --accent: 212 92% 45%;                /* #1f6feb */
     --accent-foreground: 210 46% 95%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 46% 95%;
 
-    --border: 215 21% 19%;             /* #30363d */
+    --border: 215 21% 19%;                /* #30363d with more opacity */
     --input: 215 21% 19%;
     --ring: 212 92% 45%;
 
@@ -45,11 +45,13 @@ All colors MUST be HSL.
 
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--success) / 0.05));
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--background-secondary)));
+    --gradient-card: linear-gradient(145deg, rgba(33, 38, 45, 0.8), rgba(13, 17, 23, 0.9));
+    --gradient-bg: linear-gradient(to-br, rgba(99, 102, 241, 0.05), transparent, rgba(244, 63, 94, 0.05));
     
     /* Shadows */
     --shadow-elegant: 0 8px 32px 0 rgba(31, 111, 235, 0.1);
-    --shadow-card: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+    --shadow-card: 0 4px 16px 0 rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 40px rgba(255, 255, 255, 0.1);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -119,6 +121,18 @@ All colors MUST be HSL.
   
   .gradient-card {
     background: var(--gradient-card);
+  }
+  
+  .gradient-bg {
+    background: var(--gradient-bg);
+  }
+  
+  .bg-app {
+    background: #030303;
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
   }
 }
 

@@ -78,7 +78,7 @@ export const PullRequestDetail: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 relative z-10">
       {/* Back Navigation */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -101,7 +101,7 @@ export const PullRequestDetail: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <Card>
+            <Card className="gradient-card backdrop-blur-sm border-border/50">
               <CardHeader>
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-2">
@@ -159,7 +159,7 @@ export const PullRequestDetail: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <Card>
+              <Card className="gradient-card backdrop-blur-sm border-border/50">
                 <CardHeader>
                   <CardTitle className="text-lg">Labels</CardTitle>
                 </CardHeader>
@@ -190,7 +190,7 @@ export const PullRequestDetail: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <Card>
+            <Card className="gradient-card backdrop-blur-sm border-border/50">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MessageSquare className="h-5 w-5" />
@@ -257,7 +257,7 @@ export const PullRequestDetail: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <Card>
+            <Card className="gradient-card backdrop-blur-sm border-border/50">
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
                   <GitPullRequest className="h-5 w-5" />
@@ -286,7 +286,7 @@ export const PullRequestDetail: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <Card>
+            <Card className="gradient-card backdrop-blur-sm border-border/50">
               <CardHeader>
                 <CardTitle className="text-lg">Details</CardTitle>
               </CardHeader>
@@ -336,7 +336,7 @@ export const PullRequestDetail: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <Card>
+            <Card className="gradient-card backdrop-blur-sm border-border/50">
               <CardHeader>
                 <CardTitle className="text-lg">Actions</CardTitle>
               </CardHeader>

@@ -55,7 +55,7 @@ export const Repositories: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -160,7 +160,7 @@ export const Repositories: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
             >
-              <Card className="h-full hover:shadow-card transition-smooth group">
+              <Card className="h-full hover:shadow-card transition-smooth group gradient-card backdrop-blur-sm border-border/50">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <CardTitle className="flex items-center gap-2 group-hover:text-primary transition-smooth">

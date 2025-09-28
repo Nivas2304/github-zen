@@ -59,7 +59,7 @@ export const Dashboard: React.FC = () => {
     .slice(0, 4);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 relative z-10">
       {/* Welcome Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ export const Dashboard: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="hover:shadow-card transition-smooth">
+              <Card className="hover:shadow-card transition-smooth gradient-card backdrop-blur-sm border-border/50">
                 <CardHeader className="pb-2">
                   <div className="flex items-center justify-between">
                     <CardTitle className="text-sm font-medium text-muted-foreground">
@@ -117,7 +117,7 @@ export const Dashboard: React.FC = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <Card>
+          <Card className="gradient-card backdrop-blur-sm border-border/50">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
@@ -164,7 +164,7 @@ export const Dashboard: React.FC = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <Card>
+          <Card className="gradient-card backdrop-blur-sm border-border/50">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
@@ -216,7 +216,7 @@ export const Dashboard: React.FC = () => {
         transition={{ delay: 0.6 }}
         className="mt-8"
       >
-        <Card>
+        <Card className="gradient-card backdrop-blur-sm border-border/50">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Activity className="h-5 w-5" />
