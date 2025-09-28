@@ -1,25 +1,75 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import { AuthProvider, useAuth } from '@/contexts/AuthContext';
+import { Layout } from '@/components/Layout';
+import { Landing } from '@/pages/Landing';
+import { Dashboard } from '@/pages/Dashboard';
+import { Repositories } from '@/pages/Repositories';
+import { PullRequests } from '@/pages/PullRequests';
+import { PullRequestDetail } from '@/pages/PullRequestDetail';
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <>{children}</> : <Navigate to="/" replace />;
+};
+
+const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <Navigate to="/dashboard" replace /> : <>{children}</>;
+};
+
+const AppRoutes: React.FC = () => {
+  return (
+    <Routes>
+      <Route path="/" element={
+        <PublicRoute>
+          <Landing />
+        </PublicRoute>
+      } />
+      <Route path="/" element={<Layout />}>
+        <Route path="dashboard" element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        } />
+        <Route path="repositories" element={
+          <ProtectedRoute>
+            <Repositories />
+          </ProtectedRoute>
+        } />
+        <Route path="pull-requests" element={
+          <ProtectedRoute>
+            <PullRequests />
+          </ProtectedRoute>
+        } />
+        <Route path="pull-requests/:id" element={
+          <ProtectedRoute>
+            <PullRequestDetail />
+          </ProtectedRoute>
+        } />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
