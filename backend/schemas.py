@@ -25,7 +25,7 @@ class UserResponse(UserBase):
     updated_at: Optional[datetime] = None
     
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 
 class RepositoryBase(BaseModel):
@@ -52,7 +52,7 @@ class RepositoryResponse(RepositoryBase):
     created_at: datetime
     
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 
 class PullRequestBase(BaseModel):
@@ -80,7 +80,7 @@ class PullRequestResponse(PullRequestBase):
     synced_at: datetime
     
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 
 class CommentBase(BaseModel):
@@ -103,7 +103,7 @@ class CommentResponse(CommentBase):
     synced_at: datetime
     
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 
 class Token(BaseModel):
