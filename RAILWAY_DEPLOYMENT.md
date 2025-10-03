@@ -11,11 +11,14 @@
 1. **Click "New Project"** in Railway dashboard
 2. **Select "Deploy from GitHub repo"**
 3. **Choose your repository**: `Nivas2304/github-zen`
-4. **Railway will auto-detect** your FastAPI app in the `backend/` folder
+4. **Railway will use our configuration files**:
+   - `railway.json` - Railway deployment config
+   - `nixpacks.toml` - Build configuration
+   - `start.sh` - Startup script
 5. **Click "Deploy"** - Railway will automatically:
-   - Detect Python/FastAPI
-   - Install dependencies from `requirements.txt`
-   - Run your app using the `Procfile`
+   - Detect Python/FastAPI from our config
+   - Install dependencies from `backend/requirements.txt`
+   - Run your app using our startup script
 
 ### 3. Add PostgreSQL Database
 1. **In your project dashboard**, click **"+ New"**
