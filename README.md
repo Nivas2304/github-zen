@@ -1,73 +1,233 @@
-# Welcome to your Lovable project
+# GitHub Zen - GitHub Integration Application
 
-## Project info
+A full-stack web application that allows users to sign in with GitHub, view their repositories and pull requests, and comment on PRs. Built with React frontend and FastAPI backend.
 
-**URL**: https://lovable.dev/projects/09b438a0-bbc5-49b0-8920-2d2c3d82ce06
+## Features
 
-## How can I edit this code?
+- 🔐 GitHub OAuth Authentication
+- 📚 Repository Management
+- 🔄 Pull Request Tracking
+- 💬 PR Commenting
+- 📊 Dashboard with Statistics
+- 🧪 90%+ Test Coverage
+- 🚀 Docker Deployment Ready
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+### Frontend
+- React 18 with TypeScript
+- Vite for build tooling
+- Tailwind CSS for styling
+- Shadcn/ui components
+- React Router for navigation
+- TanStack Query for state management
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/09b438a0-bbc5-49b0-8920-2d2c3d82ce06) and start prompting.
+### Backend
+- FastAPI (Python)
+- SQLAlchemy for database ORM
+- PostgreSQL/SQLite database
+- JWT authentication
+- GitHub API integration
+- Comprehensive test suite
 
-Changes made via Lovable will be committed automatically to this repo.
+## Project Structure
 
-**Use your preferred IDE**
+```
+github-zen/
+├── frontend/                 # React frontend application
+│   ├── src/
+│   │   ├── components/      # Reusable UI components
+│   │   ├── pages/          # Application pages
+│   │   ├── contexts/       # React contexts
+│   │   ├── hooks/          # Custom hooks
+│   │   └── data/           # Mock data and types
+│   ├── package.json
+│   └── Dockerfile
+├── backend/                 # FastAPI backend application
+│   ├── main.py             # FastAPI app entry point
+│   ├── models.py           # Database models
+│   ├── schemas.py          # Pydantic schemas
+│   ├── services.py         # Business logic
+│   ├── auth.py             # Authentication utilities
+│   ├── github_client.py    # GitHub API client
+│   ├── tests/              # Test suite
+│   ├── requirements.txt
+│   └── Dockerfile
+└── deployment/             # Deployment configurations
+    ├── docker-compose.yml  # Docker Compose setup
+    ├── nginx.conf          # Nginx configuration
+    └── env.example         # Environment variables template
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Quick Start
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
 
-Follow these steps:
+- Python 3.11+
+- Node.js 18+
+- Docker (optional)
+- GitHub OAuth App (see setup guide below)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 1. Clone and Setup
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```bash
+git clone <repository-url>
+cd github-zen
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+### 2. Backend Setup
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+### 3. Frontend Setup
+
+```bash
+cd frontend
+npm install
+```
+
+### 4. Environment Configuration
+
+Copy environment files and configure:
+
+```bash
+# Backend
+cp backend/env.example backend/.env
+
+# Frontend (if needed)
+cp frontend/.env.example frontend/.env
+
+# Deployment
+cp deployment/env.example deployment/.env
+```
+
+### 5. GitHub OAuth Setup
+
+1. Go to [GitHub Developer Settings](https://github.com/settings/developers)
+2. Click "New OAuth App"
+3. Fill in the application details:
+   - **Application name**: GitHub Zen
+   - **Homepage URL**: `http://localhost:3000` (development)
+   - **Authorization callback URL**: `http://localhost:8000/auth/callback`
+4. Copy the Client ID and Client Secret to your `.env` files
+
+### 6. Run the Application
+
+#### Development Mode
+
+```bash
+# Terminal 1 - Backend
+cd backend
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+# Terminal 2 - Frontend
+cd frontend
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+#### Production Mode (Docker)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+cd deployment
+docker-compose up -d
+```
 
-**Use GitHub Codespaces**
+## API Documentation
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Once the backend is running, visit:
+- **Swagger UI**: http://localhost:8000/docs
+- **ReDoc**: http://localhost:8000/redoc
 
-## What technologies are used for this project?
+## Testing
 
-This project is built with:
+### Backend Tests
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```bash
+cd backend
+pytest --cov=. --cov-report=html
+```
 
-## How can I deploy this project?
+### Frontend Tests
 
-Simply open [Lovable](https://lovable.dev/projects/09b438a0-bbc5-49b0-8920-2d2c3d82ce06) and click on Share -> Publish.
+```bash
+cd frontend
+npm test
+```
 
-## Can I connect a custom domain to my Lovable project?
+## Deployment
 
-Yes, you can!
+### Docker Deployment
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Configure environment variables in `deployment/.env`
+2. Run the deployment:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```bash
+cd deployment
+docker-compose up -d
+```
+
+### Cloud Deployment Options
+
+#### Heroku
+1. Create Heroku apps for frontend and backend
+2. Configure environment variables
+3. Deploy using Heroku CLI or GitHub integration
+
+#### AWS
+1. Use AWS ECS with Fargate for containerized deployment
+2. Use RDS for PostgreSQL database
+3. Use CloudFront for CDN
+
+#### DigitalOcean
+1. Use App Platform for easy deployment
+2. Use Managed PostgreSQL database
+
+## Environment Variables
+
+### Backend (.env)
+```env
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+GITHUB_REDIRECT_URI=http://localhost:8000/auth/callback
+SECRET_KEY=your-secret-key-here
+DATABASE_URL=sqlite:///./github_zen.db
+FRONTEND_URL=http://localhost:5173
+```
+
+### Frontend (.env)
+```env
+REACT_APP_API_URL=http://localhost:8000
+```
+
+### Deployment (.env)
+```env
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+GITHUB_REDIRECT_URI=https://yourdomain.com/auth/callback
+REACT_APP_API_URL=https://yourdomain.com/api
+FRONTEND_URL=https://yourdomain.com
+DATABASE_URL=postgresql://user:pass@host:port/db
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Ensure all tests pass
+6. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Support
+
+For support and questions, please open an issue in the repository.
+
