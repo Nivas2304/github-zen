@@ -1,0 +1,15 @@
+# Minimal requirements - ONLY pre-compiled wheels
+# Zero compilation, guaranteed to work on Render
+
+fastapi==0.68.2
+uvicorn[standard]==0.15.0
+sqlalchemy==1.4.39
+psycopg2-binary==2.9.5
+pydantic==1.8.2
+httpx==0.24.1
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.5
+alembic==1.8.1
+setuptools>=65.0.0
+wheel>=0.37.0

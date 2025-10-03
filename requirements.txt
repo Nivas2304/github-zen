@@ -1,0 +1,5 @@
+# This file is for Railway/Railpack detection
+# The actual Python dependencies are in backend/requirements.txt
+# This helps Railpack understand this is a Python project
+
+# Railway will use backend/requirements.txt for actual dependencies
