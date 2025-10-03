@@ -6,7 +6,7 @@ uvicorn[standard]==0.22.0
 sqlalchemy==1.4.53
 psycopg2-binary==2.9.7
 pydantic==1.10.12
-pydantic-settings==1.10.1
+pydantic-settings==1.0.0
 httpx==0.24.1
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
