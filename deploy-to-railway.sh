@@ -1,0 +1,58 @@
+#!/bin/bash
+
+echo "🚀 Railway Deployment Helper"
+echo "=============================="
+
+echo ""
+echo "📋 Before deploying, make sure you have:"
+echo "1. ✅ GitHub OAuth App created"
+echo "2. ✅ Railway account (railway.app)"
+echo "3. ✅ Vercel account (vercel.com)"
+echo ""
+
+echo "🔧 GitHub OAuth Setup:"
+echo "1. Go to GitHub → Settings → Developer settings → OAuth Apps"
+echo "2. Create new OAuth App with these URLs:"
+echo "   - Homepage: https://your-app.vercel.app"
+echo "   - Callback: https://your-backend.up.railway.app/auth/callback"
+echo ""
+
+echo "🚀 Railway Deployment Steps:"
+echo "1. Go to railway.app and login with GitHub"
+echo "2. Click 'New Project' → 'Deploy from GitHub repo'"
+echo "3. Select your repository: Nivas2304/github-zen"
+echo "4. Railway will auto-detect FastAPI in backend/ folder"
+echo "5. Click 'Deploy'"
+echo ""
+
+echo "🗄️ Add PostgreSQL Database:"
+echo "1. In Railway dashboard, click '+ New'"
+echo "2. Select 'Database' → 'PostgreSQL'"
+echo "3. Railway will create database automatically"
+echo ""
+
+echo "⚙️ Environment Variables to add in Railway:"
+echo "GITHUB_CLIENT_ID=your_github_client_id"
+echo "GITHUB_CLIENT_SECRET=your_github_client_secret"
+echo "GITHUB_REDIRECT_URI=https://your-backend.up.railway.app/auth/callback"
+echo "FRONTEND_URL=https://your-frontend.vercel.app"
+echo "SECRET_KEY=your-super-secret-jwt-key-here"
+echo "ACCESS_TOKEN_EXPIRE_MINUTES=30"
+echo ""
+
+echo "🎯 Vercel Frontend Deployment:"
+echo "1. Go to vercel.com and import GitHub repo"
+echo "2. Set root directory to 'frontend/'"
+echo "3. Add environment variable:"
+echo "   VITE_API_URL=https://your-backend.up.railway.app"
+echo ""
+
+echo "✅ After deployment:"
+echo "1. Test your backend: https://your-backend.up.railway.app/health"
+echo "2. Test your frontend: https://your-frontend.vercel.app"
+echo "3. Test GitHub OAuth flow"
+echo ""
+
+echo "📚 Full guide available in: RAILWAY_DEPLOYMENT.md"
+echo ""
+echo "🎉 Happy deploying!"
