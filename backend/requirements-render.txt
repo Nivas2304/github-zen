@@ -1,3 +1,6 @@
+# Render-compatible requirements.txt
+# Using pre-compiled wheels to avoid Rust compilation issues
+
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
 sqlalchemy==2.0.23
@@ -9,5 +12,7 @@ python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
 python-multipart==0.0.6
 alembic==1.12.1
+
+# Additional dependencies for better compatibility
 setuptools>=65.0.0
 wheel>=0.37.0
